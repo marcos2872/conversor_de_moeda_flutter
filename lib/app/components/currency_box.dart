@@ -43,7 +43,7 @@ class CurrencyBox extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-               Expanded(
+              Expanded(
                   flex: 2,
                   child: TextField(
                     controller: controller,
