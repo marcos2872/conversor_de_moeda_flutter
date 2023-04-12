@@ -1,8 +1,22 @@
 import 'package:conversor_de_moedas/app/components/currency_box.dart';
+import 'package:conversor_de_moedas/app/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class HomeView extends StatefulWidget {
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  late TextEditingController toText = TextEditingController();
+  late TextEditingController fromText = TextEditingController();
+  late HomeController homeController;
+
+  @override
+  void initState() {
+    super.initState();
+    homeController = HomeController(toText = toText, fromText = fromText);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,24 +34,46 @@ class HomeView extends StatelessWidget {
                 height: 150,
               ),
               const SizedBox(height: 50),
-              const CurrencyBox(),
+              CurrencyBox(
+                selectedItem: homeController.toCurrency,
+                controller: toText,
+                items: homeController.currencies,
+                onChanged: (model) {
+                  setState(() {
+                    homeController.toCurrency = model!;
+                  });
+                },
+              ),
               const SizedBox(
                 height: 10,
               ),
-              const CurrencyBox(),
+              CurrencyBox(
+                selectedItem: homeController.fromCurrency,
+                controller: fromText,
+                items: homeController.currencies,
+                onChanged: (model) {
+                  setState(() {
+                    homeController.fromCurrency = model!;
+                  });
+                },
+              ),
               const SizedBox(height: 50),
               TextButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.amber[700])),
-                  onPressed: () {},
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: Text(
-                      'Converter',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                  ))
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.amber[700])),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                  child: Text(
+                    'Converter',
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+                onPressed: () {
+                  homeController.convert();
+                  print(fromText.text);
+                },
+              )
             ],
           ),
         ),
