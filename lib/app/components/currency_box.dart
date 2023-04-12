@@ -8,7 +8,7 @@ class CurrencyBox extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: MediaQuery.of(context).size.width - 40,
+          width: MediaQuery.of(context).size.width - 60,
           child: Row(
             children: [
               Expanded(
@@ -16,6 +16,7 @@ class CurrencyBox extends StatelessWidget {
                   child: SizedBox(
                     height: 63,
                     child: DropdownButton(
+                        iconEnabledColor: Colors.amber,
                         underline: Container(
                           height: 1,
                           color: Colors.amber,

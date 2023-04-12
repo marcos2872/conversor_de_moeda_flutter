@@ -11,7 +11,7 @@ class HomeView extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 100),
+          padding: const EdgeInsets.only(left: 30, right: 30, top: 100),
           child: Column(
             children: [
               Image.asset(
@@ -19,21 +19,21 @@ class HomeView extends StatelessWidget {
                 width: 150,
                 height: 150,
               ),
-              CurrencyBox(),
-              SizedBox(height: 10,),
-              CurrencyBox(),
+              const SizedBox(height: 50),
+              const CurrencyBox(),
               const SizedBox(
-                height: 50,
+                height: 10,
               ),
+              const CurrencyBox(),
+              const SizedBox(height: 50),
               TextButton(
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(Colors.amber[700])),
                   onPressed: () {},
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                    child: const Text(
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                    child: Text(
                       'Converter',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
