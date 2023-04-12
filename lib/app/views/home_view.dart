@@ -71,7 +71,6 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 onPressed: () {
                   homeController.convert();
-                  print(fromText.text);
                 },
               )
             ],
